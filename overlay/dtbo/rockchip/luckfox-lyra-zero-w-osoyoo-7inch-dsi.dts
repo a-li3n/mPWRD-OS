@@ -35,12 +35,12 @@
 };
 
 &dsi_panel {
-	compatible = "osoyoo,dsi-7inch", "simple-panel-dsi";
+	compatible = "osoyoo,dsi-7inch";
 	status = "okay";
 
 	power-supply = <&vcc_3v3>;
 	backlight = <&display_mcu>;
-	reset-gpios = <&display_mcu 0 1>;
+	reset-gpios = <&display_mcu 0 0>;
 
 	prepare-delay-ms = <0>;
 	reset-delay-ms = <60>;
