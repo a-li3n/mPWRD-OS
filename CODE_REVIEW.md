@@ -47,7 +47,7 @@ All of the above completed without reported errors.
 
 Additional dynamic signal:
 
-- The user reported that a full image build completed successfully after the Meshtastic hook fix.
+- Full image build completed successfully after the Meshtastic hook fix.
 
 ## Residual Risk
 
