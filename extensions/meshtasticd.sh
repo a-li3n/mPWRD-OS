@@ -156,6 +156,7 @@ function __meshtasticd_configure_board() {
 
 function post_family_tweaks__700_install_meshtasticd() {
 	display_alert "Extension: ${EXTENSION}" "Installing meshtasticd and i2c-tools" "info"
+	chroot_sdcard apt-get update
 	chroot_sdcard apt-get --yes install meshtasticd i2c-tools
 }
 

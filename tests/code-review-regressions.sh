@@ -69,6 +69,8 @@ assert_contains "extensions/meshtasticd.sh" 'MACAddressSource.*not found' \
 	"Meshtastic MACAddressSource update must fail clearly when key is missing"
 assert_contains "extensions/meshtasticd.sh" '\$\{SDCARD\}/etc/meshtasticd/config\.yaml' \
 	"meshtasticd config updates in the extension must target the image root via SDCARD"
+assert_contains "extensions/meshtasticd.sh" 'chroot_sdcard apt-get update' \
+	"meshtasticd extension install hook must refresh apt metadata inside the chroot"
 assert_contains "extensions/meshtasticd.sh" 'chroot_sdcard apt-get --yes install meshtasticd i2c-tools' \
 	"meshtasticd extension install hook must install meshtasticd and i2c-tools via chroot"
 
@@ -182,6 +184,8 @@ fi
 
 : > "${tmpdir}/chroot.log"
 post_family_tweaks__700_install_meshtasticd
+assert_contains "${tmpdir}/chroot.log" '^apt-get update$' \
+	"meshtasticd extension install hook must refresh apt metadata before install"
 assert_contains "${tmpdir}/chroot.log" '^apt-get --yes install meshtasticd i2c-tools$' \
 	"meshtasticd extension install hook must install meshtasticd and i2c-tools"
 
